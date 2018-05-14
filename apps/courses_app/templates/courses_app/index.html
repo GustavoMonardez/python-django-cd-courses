@@ -42,7 +42,7 @@
                 <td>{{ course.description }}</td>
                 <td>{{ course.created_at }}</td>
                 <td>
-                    <form action="/courses/destroy/{{ course.id }">
+                    <form action="/courses/destroy/{{ course.id }}">
                         {% csrf_token %}
                         <input type="submit" value="remove" class="btn btn-danger">
                     </form>

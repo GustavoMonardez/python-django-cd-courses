@@ -22,13 +22,10 @@ def new(request):
         # redirect back to home page
         return redirect("/")
 
-    
-
 def confirm(request,course_id):
-    print("confirm page:", course_id)
-    course = {"course_id": course_id}
+    course = {"course": Course.objects.get(id=course_id)}
     return render(request, "courses_app/confirm.html",course)
 
 def destroy(request, course_id):
-    print('destroy has been confimed: ', course_id)
+    Course.objects.get(id=course_id).delete()
     return redirect("/")
