@@ -28,24 +28,27 @@
         <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{message}}</p>
         {% endfor %}
         <h1>Courses</h1>  
-        <table>
+        
+        <table class="table">
             <tr>
                 <th>Course Name</th>
                 <th>Decription</th>
                 <th>Date Added</th>
                 <th>Actions</th>
             </tr>
+            {% for course in courses %}
             <tr>
-                <td>How to be a ninja</td>
-                <td>Decription</td>
-                <td>Dec 1st 2013 5:34PM</td>
+                <td>{{ course.name }}</td>
+                <td>{{ course.description }}</td>
+                <td>{{ course.created_at }}</td>
                 <td>
-                    <form action="/courses/destroy/3">
+                    <form action="/courses/destroy/{{ course.id }">
                         {% csrf_token %}
                         <input type="submit" value="remove" class="btn btn-danger">
                     </form>
                 </td>
             </tr>
+            {% endfor %}
         </table>
     </div>    
 </body>

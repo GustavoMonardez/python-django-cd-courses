@@ -3,7 +3,7 @@ from django.contrib import messages
 from .models import Course
 
 def index(request):
-    return render(request, "courses_app/index.html")
+    return render(request, "courses_app/index.html", {"courses":Course.objects.all().values()})
 
 def new(request):
     # capture data
