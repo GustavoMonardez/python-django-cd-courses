@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Delete Course</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'courses_app/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'courses_app/css/main.css' %}">
+</head>
+<body>
+    <div class="wrapper">      
+        <form action="/courses/destroy/3/confirm" method="POST">
+            {% csrf_token %}
+            <h1>Are you sure you want to delete the following course?{{ course_id }}</h1>
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td>How to get more ennergy in the bootcamp</td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td>Description about the course</td>
+                </tr>
+            </table>
+            <a href="/" class="btn btn-secondary">No</a>
+            <input type="submit" value="Yes!  want to delete this" class="btn btn-danger">
+        </form>
+    </div>    
+</body>
+</html>
