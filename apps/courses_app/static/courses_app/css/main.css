@@ -23,14 +23,6 @@ form{
     line-height: 26px;
 }
 
-.edit{
-    display:block;
-    width: 400px;
-    margin-bottom:10px;
-    padding:10px 30px 10px 30px;
-    border:1px solid silver;
-}
-
 .text-right{
     margin-top:10px;
 }

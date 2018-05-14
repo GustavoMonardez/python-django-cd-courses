@@ -1,4 +1,6 @@
 from django.shortcuts import render, HttpResponse, redirect
+from django.contrib import messages
+from .models import Course
 
 def index(request):
     return render(request, "courses_app/index.html")
@@ -8,12 +10,19 @@ def new(request):
     name = request.POST["name"]
     description = request.POST["description"]
     # validate data (name > 5 and desc > 15)
+    errors = Course.objects.validator(request.POST)
+    if len(errors):
+        for value in errors.values():
+            messages.error(request, value)
+        return redirect("/")
+    else:
+        # insert data
+        Course.objects.create(name=name,description=description)
+        messages.success(request, "Course created successfully!")
+        # redirect back to home page
+        return redirect("/")
 
-    # insert data
-
-    # redirect back to home page
-    print("just added a new course")
-    return redirect("/")
+    
 
 def confirm(request,course_id):
     print("confirm page:", course_id)
